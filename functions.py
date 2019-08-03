@@ -464,7 +464,79 @@ class DataRainfall:
         plt.ylabel("Annual Rainfall(in mm)")
         plt.show()
 
+    def indiaSpecific2Years(self):
+        window = Tk()
 
+        window.configure(background="lightskyblue1")
+        window.geometry("500x405")
+        window.title("One State")
+
+        yearLabel1 = Label(window, text="Enter the Year 1", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        yearLabel1.pack()
+        self.year1 = Entry(window)
+        self.year1.pack()
+
+        emptyLabel200 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel200.pack()
+
+        yearLabel2 = Label(window, text="Enter the Year 2", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        yearLabel2.pack()
+        self.year2 = Entry(window)
+        self.year2.pack()
+
+        emptyLabel300 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel300.pack()
+
+        btnShow = Button(window, text="Show", activebackground="light yellow", bg="light green", fg="black",
+                         command=self.india2)
+        btnShow.pack()
+
+        window.mainloop()
+
+
+
+    def india2(self):
+        # print("hello")
+        y1 = self.year1.get()
+        y2 = self.year2.get()
+
+        rainfall = pd.read_csv("r.csv")
+        annualRainfall = rainfall.ANNUAL
+        yearNo1 = year[y1]
+        yearNo2 = year[y2]
+
+
+
+        values1 = []
+        values2 = []
+        i1 = yearNo1
+        while i1 < len(annualRainfall):
+            values1.append(annualRainfall[i1])
+            i1 = i1 + 18
+
+        print(values1)
+
+
+        i2 = yearNo2
+        while i2 < len(annualRainfall):
+            values2.append(annualRainfall[i2])
+            i2 = i2 + 18
+
+        print(values2)
+
+        statesShort = ["A&N", "AR", "AS & ML", "NG", "SK", "WB", "OR", "JH", "BH", "E.UP", "W.UP", "UK"
+            , "HR, DL & CH", "PB", "HP", "J&K", "W.RJ", "E.RJ", "W.MP", "E.MP", "GJ", "KCH"
+            , "GOA", "M.MH", "MAT", "VD", "CG", "C.AP", "TG", "RLS", "TN", "C.KA", "N.KA"
+            , "S.KA", "KL", "LD"]
+
+        plt.plot(statesShort, values1, label='Rainfall in {}'.format(y1))
+        plt.plot(statesShort, values2, label='Rainfall in {}'.format(y2))
+        plt.title("Comparison of Annual Rainfall in India in {} and {}".format(y1, y2))
+        plt.legend(loc='best')
+        plt.title("Annual Rainfall in India in {} and {}".format(y1, y2))
+        plt.xlabel("States")
+        plt.ylabel("Annual Rainfall(in mm)")
+        plt.show()
 
 
 
