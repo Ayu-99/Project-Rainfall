@@ -34,7 +34,7 @@ def analysisGUI():
     emptyLabel3 = Label(window, text="", bg="lightskyblue1")
     emptyLabel3.pack()
 
-    option4 = Button(window, text="Compare rainfall for one year with another", activebackground="light yellow", bg="light green", fg="black")
+    option4 = Button(window, text="Compare rainfall for one year with another", activebackground="light yellow", bg="light green", fg="black", command=df.indiaSpecific2Years)
     option4.pack()
     emptyLabel4 = Label(window, text="", bg="lightskyblue1")
     emptyLabel4.pack()
