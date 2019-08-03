@@ -24,12 +24,12 @@ def analysisGUI():
     emptyLabel1 = Label(window, text="", bg="lightskyblue1")
     emptyLabel1.pack()
 
-    option2 = Button(window, text="Compare rainfall of two states in specific year ", activebackground="light yellow", bg="light green", fg="black")
+    option2 = Button(window, text="Compare rainfall of two states in specific year ", activebackground="light yellow", bg="light green", fg="black", command=df.twoStates)
     option2.pack()
     emptyLabel2 = Label(window, text="", bg="lightskyblue1")
     emptyLabel2.pack()
 
-    option3 = Button(window, text="Show Rainfall all over India in one specific year", activebackground="light yellow", bg="light green", fg="black")
+    option3 = Button(window, text="Show Rainfall all over India in one specific year", activebackground="light yellow", bg="light green", fg="black", command=df.indiaSpecificYear)
     option3.pack()
     emptyLabel3 = Label(window, text="", bg="lightskyblue1")
     emptyLabel3.pack()
