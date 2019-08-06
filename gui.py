@@ -42,6 +42,13 @@ def analysisGUI():
 
     window.mainloop()
 
+    # window.destroy()
+
+
+
+
+
+
 
 window = Tk()
 
@@ -72,7 +79,7 @@ option2.pack()
 emptyLabel2 = Label(window, text="", bg="lightskyblue1")
 emptyLabel2.pack()
 
-option3 = Button(window, text="Classification", activebackground="light yellow", bg="light green", fg="black")
+option3 = Button(window, text="Classification", activebackground="light yellow", bg="light green", fg="black", command=df.Classify)
 option3.pack()
 emptyLabel3 = Label(window, text="", bg="lightskyblue1")
 emptyLabel3.pack()
