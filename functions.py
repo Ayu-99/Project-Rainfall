@@ -2,9 +2,14 @@ from tkinter import *
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from  sklearn import tree
+import numpy as np
+from tkinter import messagebox
+
 
 #119.9	45.6	30.9	55.8	533.9	458.2	317.3	369.6	868.9	209.7	300.5	187.3
-#57.8	35.8	134.2	403.4	187.4	645.8	638.9	316	724.9	248.1	22	26.2
+#57.8	35.8
+# 134.2	403.4	187.4	645.8	638.9	316	724.9	248.1	22	26.2
 
 
 states = {"ANDAMAN & NICOBAR ISLANDS":0, "ARUNACHAL PRADESH":1, "ASSAM & MEGHALAYA":2, "NAGA MANI MIZO TRIPURA":3,
@@ -221,8 +226,8 @@ class DataRainfall:
 
 
     def state2(self):
-        s1 = self.stateFirst.get()
-        s2 = self.stateSecond.get()
+        s1 = self.stateFirst.get().upper()
+        s2 = self.stateSecond.get().upper()
         y = self.year.get()
 
         # print(s1)
@@ -449,7 +454,7 @@ class DataRainfall:
             values.append(annualRainfall[i])
             i=i+18
 
-        print(values)
+        # print(values)
 
 
 
@@ -514,7 +519,7 @@ class DataRainfall:
             values1.append(annualRainfall[i1])
             i1 = i1 + 18
 
-        print(values1)
+        # print(values1)
 
 
         i2 = yearNo2
@@ -522,7 +527,7 @@ class DataRainfall:
             values2.append(annualRainfall[i2])
             i2 = i2 + 18
 
-        print(values2)
+        # print(values2)
 
         statesShort = ["A&N", "AR", "AS & ML", "NG", "SK", "WB", "OR", "JH", "BH", "E.UP", "W.UP", "UK"
             , "HR, DL & CH", "PB", "HP", "J&K", "W.RJ", "E.RJ", "W.MP", "E.MP", "GJ", "KCH"
@@ -539,11 +544,79 @@ class DataRainfall:
         plt.show()
 
 
+    def Classify(self):
+        window = Tk()
+
+        window.configure(background="lightskyblue1")
+        window.geometry("500x405")
+        window.title("Data Classification")
 
 
 
+        emptyLabel200 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel200.pack()
+
+        stateLabel = Label(window, text="Enter the State", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        stateLabel.pack()
+        self.state = Entry(window)
+        self.state.pack()
+
+        btnShow = Button(window, text="Classify", activebackground="light yellow", bg="light green", fg="black",
+                         command=self.classifyState)
+        btnShow.pack()
+
+        window.mainloop()
 
 
 
+    def classifyState(self):
+        # print("hello")
 
+        y = self.state.get().upper()
+        # print(y)
+        content = pd.read_csv("averageRainfall.csv")
+
+        data = content.ANNUAL.values
+
+        stateNo = states[y]
+        value = data[stateNo]
+        # print(value)
+        # print(data)
+
+        # print("**********************************************************************")
+        data = data.reshape(len(data), 1)
+        # print(data)
+
+        labels = content.LABELS.values
+        # print(labels)
+
+        # print("**********************************************************************")
+        labels = labels.reshape(len(labels), 1)
+        # print(labels)
+
+        model = tree.DecisionTreeClassifier()
+        model.fit(data, labels)
+
+
+        # print(stateNo)
+        inputData = [value]
+        # print(inputData)
+        predictedClass = model.predict([inputData])
+        # print("**", predictedClass)
+        if predictedClass[0] == 0:
+            # window = Tk()
+            # window.config(background="lightskyblue1")
+            # window.title("Classification")
+            # window.geometry("500x405")
+            # #
+            # heavyStateLabel = Label(window, text="Heavy Rainfall State !!", font=("Courier", 14), bg="lightskyblue1", fg="purple3" )
+            # heavyStateLabel.pack()
+
+            messagebox.showwarning("Heavy Alert", "Heavy Rainfall State !!")
+
+        elif predictedClass[0] == 1:
+            messagebox.showwarning("Alert", "Medium Rainfall State !!")
+
+        else:
+            messagebox.showinfo("Info", "Less Rainfall State !!")
 
