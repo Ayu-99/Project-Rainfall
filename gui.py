@@ -6,7 +6,7 @@ df = DataRainfall()
 
 def analysisGUI():
     window = Tk()
-    window.configure(background="lightskyblue1")
+    window.configure(background="lightyellow")
     window.geometry("400x400")
     window.title("Data Analysis")
 
@@ -74,7 +74,7 @@ option1.pack()
 emptyLabel1 = Label(window, text="", bg="lightskyblue1")
 emptyLabel1.pack()
 
-option2 = Button(window, text="Prediction", activebackground="light yellow", bg="light green", fg="black")
+option2 = Button(window, text="Prediction", activebackground="light yellow", bg="light green", fg="black", command=df.regression)
 option2.pack()
 emptyLabel2 = Label(window, text="", bg="lightskyblue1")
 emptyLabel2.pack()
@@ -84,10 +84,11 @@ option3.pack()
 emptyLabel3 = Label(window, text="", bg="lightskyblue1")
 emptyLabel3.pack()
 
-option4 = Button(window, text="Image Classification", activebackground="light yellow", bg="light green", fg="black")
+option4 = Button(window, text="Image Classification", activebackground="light yellow", bg="light green", fg="black", command=df.imageClassify)
 option4.pack()
 emptyLabel4 = Label(window, text="", bg="lightskyblue1")
 emptyLabel4.pack()
 
 
 window.mainloop()
+# window.destroy()
