@@ -5,6 +5,8 @@ import seaborn as sns
 from  sklearn import tree
 import numpy as np
 from tkinter import messagebox
+from sklearn import datasets, linear_model
+from sklearn.metrics import mean_squared_error, r2_score
 
 
 #119.9	45.6	30.9	55.8	533.9	458.2	317.3	369.6	868.9	209.7	300.5	187.3
@@ -561,6 +563,9 @@ class DataRainfall:
         self.state = Entry(window)
         self.state.pack()
 
+        emptyLabel300 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel300.pack()
+
         btnShow = Button(window, text="Classify", activebackground="light yellow", bg="light green", fg="black",
                          command=self.classifyState)
         btnShow.pack()
@@ -619,4 +624,141 @@ class DataRainfall:
 
         else:
             messagebox.showinfo("Info", "Less Rainfall State !!")
+
+
+
+
+
+    def regression(self):
+        window = Tk()
+
+        window.configure(background="lightskyblue1")
+        window.geometry("500x405")
+        window.title("Prediction")
+
+        emptyLabel200 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel200.pack()
+
+        stateLabel = Label(window, text="Enter the State", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        stateLabel.pack()
+        self.state = Entry(window)
+        self.state.pack()
+
+        emptyLabel300 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel300.pack()
+
+
+        yearLabel = Label(window, text="Prediction Year", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        yearLabel.pack()
+        self.year = Entry(window)
+        self.year.pack()
+
+        emptyLabel400 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel400.pack()
+
+        btnShow = Button(window, text="Predict", activebackground="light yellow", bg="light green", fg="black",
+                         command=self.predict)
+        btnShow.pack()
+
+        window.mainloop()
+
+
+
+    def predict(self):
+        state = self.state.get().upper()
+        # print(state)
+        y1 = self.year.get()
+        # print(year)
+
+        stateNo = states[state]
+        # print(stateNo)
+
+        rainfall = pd.read_csv("r.csv")
+
+        values = rainfall.ANNUAL
+        annual = []
+        for i in range(stateNo * 18, stateNo * 18 + 18):
+            annual.append(values[i])
+
+        # print(values1)
+
+        # annual = np.array([values1])
+        # print(annual)
+
+        annual1 = np.array(annual)
+        yearValues = rainfall.YEAR
+        year = []
+        for i in range(stateNo * 18, stateNo * 18 + 18):
+            year.append(yearValues[i])
+
+
+
+        # print(yearValues1)
+        # year = np.array([yearValues1])
+        print(year)
+        year1 = np.array(year)
+
+        annual_train = annual1[:11]
+
+        annual_train = annual_train.reshape(len(annual_train), 1)
+
+
+        # print(annual_train)
+        # print(len(annual_train))
+
+        annual_test = annual1[11:]
+        annual_test = annual_test.reshape(len(annual_test), 1)
+
+        # print(annual_test)
+        # print(len(annual_test))
+
+        year_train = year1[:11]
+        year_test = year1[11:]
+
+        year_train = year_train.reshape(len(year_train), 1)
+        year_test = year_test.reshape(len(year_test), 1)
+
+        # print(year_train)
+        # print(len(year_train))
+        # print(year_test)
+        # print(len(year_test))
+
+        model = linear_model.LinearRegression()
+
+        model.fit(year_train, annual_train)
+
+        prediction = model.predict(year_train)
+
+        score = r2_score(annual_train, prediction)
+        print(score)
+
+        b1 = model.coef_
+        # print(b1)
+
+        plt.scatter(year_train, annual_train, color='black')
+        plt.plot(year_train, prediction, color='blue', linewidth=3)
+        # plt.show()
+        #
+
+        y2 = int(y1)
+        # print(y2)
+        # print(type(y2))
+        y = model.predict([[y2]])
+        print(y)
+
+        if y[0][0] < 1000:
+            messagebox.showinfo("Low Rainfall", "Predicted Rainfall is:{} for year:{} ".format(round(y[0][0],2), y2))
+
+        elif 1000 <= y[0][0] <= 2000:
+            messagebox.showwarning("Heavy Rainfall", "Predicted Rainfall is:{} for year:{}".format(round(y[0][0],2),y2))
+
+        else:
+            messagebox.showwarning("ThunderStorm", "Predicted Rainfall is:{} for year:{}".format(round(y[0][0],2), y2))
+
+
+
+    def imageClassify(self):
+        print("Hello")
+
+
 
