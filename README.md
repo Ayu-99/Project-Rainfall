@@ -16,7 +16,8 @@
 
 #### The third part is Rainfall Prediction.. This is done using Machine Learning ( skLearn : Linear Regression)
 
-- It can predict the rainfall for any state. Model is trained by rainfall data from 2000 to 2017 in each and every month ..
+- It can predict the rainfall for any state for overall year. Model is trained by rainfall data from 2000 to 2017 in each and every month 
+- It can also predict the rainfall for any month for a state  in any year...
 
 
 ### Summer Training Project
