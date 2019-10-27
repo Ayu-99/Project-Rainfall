@@ -28,8 +28,7 @@ states = {"ANDAMAN & NICOBAR ISLANDS":0, "ARUNACHAL PRADESH":1, "ASSAM & MEGHALA
 
 
 
-year = {'2000':0, '2001':1, '2002':2, '2003':3, '2004':4, '2005':5, '2006':6, '2007':7, '2008':8, '2009'
-:9, '2010':10, '2011':11, '2012':
+year = {'2000':0, '2001':1, '2002':2, '2003':3, '2004':4, '2005':5, '2006':6, '2007':7, '2008':8, '2009':9, '2010':10, '2011':11, '2012':
             12, '2013':13, '2014':14, '2015':15, '2016':16, '2017':17}
 
 class DataRainfall:
@@ -546,6 +545,516 @@ class DataRainfall:
         plt.show()
 
 
+    def sameStateDiffMonths(self):
+        m1=self.month1.get().upper()
+        m2=self.month2.get().upper()
+        state=self.state.get().upper()
+
+        # print(m1)
+        # print(m2)
+        # print(state)
+        stateNo1 = states[state]
+        # stateNo2 = states[s2]
+        # yearNo = year[y]
+        # monthValues1 = []
+
+        rainfall = pd.read_csv("r.csv")
+        # print(rainfall)
+
+
+
+        monthList1=[]
+        monthList2=[]
+        if(m1=='JAN') :
+            jan = rainfall.JAN
+            jans1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                monthList1.append(jan[i])
+
+            # print(jans)
+            # monthList1.append(jans1[yearNo])
+
+        elif m1=='FEB':
+            feb = rainfall.FEB
+            febs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                febs1.append(feb[i])
+
+
+            # monthValues1.append(febs1[yearNo])
+
+        elif m1=='MAR':
+            mar = rainfall.MAR
+            mars1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                mars1.append(mar[i])
+
+            # monthValues1.append(mars1[yearNo])
+
+        elif m1=='APR':
+            apr = rainfall.APR
+            aprs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                aprs1.append(apr[i])
+            # monthValues1.append(aprs1[yearNo])
+
+        elif m1=='MAY':
+            may = rainfall.MAY
+            mays1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                mays1.append(may[i])
+            # monthValues1.append(mays1[yearNo])
+
+        elif m1=='JUN':
+            jun = rainfall.JUN
+            juns1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                juns1.append(jun[i])
+            # monthValues1.append(juns1[yearNo])
+
+        elif m1=='JUL':
+            jul = rainfall.JUL
+            juls1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                juls1.append(jul[i])
+            # monthValues1.append(juls1[yearNo])
+
+        elif m1=='AUG':
+            aug = rainfall.AUG
+            augs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                augs1.append(aug[i])
+            # monthValues1.append(augs1[yearNo])
+
+        elif m1=='SEP':
+            sep = rainfall.SEP
+            seps1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                seps1.append(sep[i])
+            # monthValues1.append(seps1[yearNo])
+
+        elif m1=='OCT':
+            oct = rainfall.OCT
+            octs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                octs1.append(oct[i])
+            # monthValues1.append(octs1[yearNo])
+
+        elif m1=='NOV':
+            nov = rainfall.NOV
+            novs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                novs1.append(nov[i])
+            # monthValues1.append(novs1[yearNo])
+
+        else:
+            dec = rainfall.DEC
+            decs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                decs1.append(dec[i])
+            # monthValues1.append(decs1[yearNo])
+
+        if m2 == 'JAN':
+            jan1 = rainfall.JAN
+            jans12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                jans12.append(jan2[i])
+
+            # print(jans)
+            # monthValues12.append(jans12[yearNo])
+
+        elif m2 == 'FEB':
+            feb2 = rainfall.FEB
+            febs12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                monthList2.append(feb2[i])
+
+            # monthValues12.append(febs12[yearNo])
+
+        elif m2 == 'MAR':
+            mar2 = rainfall.MAR
+            mars12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                mars12.append(mar2[i])
+
+            # monthValues12.append(mars12[yearNo])
+
+        elif m2 == 'APR':
+            apr2 = rainfall.APR
+            aprs12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                aprs12.append(apr2[i])
+            # monthValues12.append(aprs12[yearNo])
+
+        elif m2 == 'MAY':
+            may2 = rainfall.MAY
+            mays12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                mays12.append(may2[i])
+            # monthValues12.append(mays12[yearNo])
+
+        elif m2 == 'JUN':
+            jun2 = rainfall.JUN
+            juns12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                juns12.append(jun2[i])
+            # monthValues12.append(juns12[yearNo])
+
+        elif m2 == 'JUL':
+            jul2 = rainfall.JUL
+            juls12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                juls12.append(jul2[i])
+            # monthValues12.append(juls12[yearNo])
+
+        elif m2 == 'AUG':
+            aug2 = rainfall.AUG
+            augs12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                augs12.append(aug2[i])
+            # monthValues12.append(augs12[yearNo])
+
+        elif m2 == 'SEP':
+            sep2 = rainfall.SEP
+            seps12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                seps12.append(sep2[i])
+            # monthValues12.append(seps12[yearNo])
+
+        elif m2 == 'OCT':
+            oct2 = rainfall.OCT
+            octs12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                octs12.append(oct2[i])
+            # monthValues12.append(octs12[yearNo])
+
+        elif m2 == 'NOV':
+            nov2 = rainfall.NOV
+            novs12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                novs12.append(nov2[i])
+            # monthValues12.append(novs12[yearNo])
+
+        else:
+            dec2 = rainfall.DEC
+            decs12 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                decs12.append(dec2[i])
+            # monthValues12.append(decs12[yearNo])
+
+        # print(rainfall)
+        monthValues2 = []
+
+        # print(monthList1)
+        # print(monthList2)
+
+        year=[2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017]
+
+        plt.plot(year, monthList1, label='Rainfall in month: {} for state: {} '.format(m1, state))
+        plt.plot(year, monthList2, label='Rainfall in month: {} for state: {}'.format(m2, state))
+        plt.title("Comparison of rainfall in state :{} in month: {} and month: {} ".format(state, m1, m2))
+        plt.legend(loc='best')
+        # plt.title("Annual Rainfall in India in {} and {}".format(y1, y2))
+        plt.xlabel("Years")
+        plt.ylabel("Annual Rainfall(in mm)")
+        plt.show()
+
+
+
+
+    def compareMonthsOfSameState(self):
+        window = Tk()
+
+        window.configure(background="lightskyblue1")
+        window.geometry("500x405")
+        window.title("One State")
+
+        monthLabel1 = Label(window, text="Enter the Month 1", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        monthLabel1.pack()
+        self.month1 = Entry(window)
+        self.month1.pack()
+
+        emptyLabel200 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel200.pack()
+
+        monthLabel2 = Label(window, text="Enter the Month 2", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        monthLabel2.pack()
+        self.month2 = Entry(window)
+        self.month2.pack()
+
+        emptyLabel300 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel300.pack()
+
+        stateLabel2 = Label(window, text="Enter the State", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        stateLabel2.pack()
+        self.state = Entry(window)
+        self.state.pack()
+
+        btnShow = Button(window, text="Show", activebackground="light yellow", bg="light green", fg="black",
+                         command=self.sameStateDiffMonths)
+        btnShow.pack()
+
+        window.mainloop()
+
+
+    def DiffStateDiffMonths(self):
+        m1 = self.month1.get().upper()
+        m2 = self.month2.get().upper()
+        state1 = self.state1.get().upper()
+        state2=self.state2.get().upper()
+
+        # print(m1)
+        # print(m2)
+        # print(state)
+        stateNo1 = states[state1]
+
+        stateNo2 = states[state2]
+        # yearNo = year[y]
+        # monthValues1 = []
+
+        rainfall = pd.read_csv("r.csv")
+        # print(rainfall)
+
+        monthList1 = []
+        monthList2 = []
+        if (m1 == 'JAN'):
+            jan = rainfall.JAN
+            jans1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                monthList1.append(jan[i])
+
+            # print(jans)
+            # monthList1.append(jans1[yearNo])
+
+        elif m1 == 'FEB':
+            feb = rainfall.FEB
+            febs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                febs1.append(feb[i])
+
+            # monthValues1.append(febs1[yearNo])
+
+        elif m1 == 'MAR':
+            mar = rainfall.MAR
+            mars1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                mars1.append(mar[i])
+
+            # monthValues1.append(mars1[yearNo])
+
+        elif m1 == 'APR':
+            apr = rainfall.APR
+            aprs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                aprs1.append(apr[i])
+            # monthValues1.append(aprs1[yearNo])
+
+        elif m1 == 'MAY':
+            may = rainfall.MAY
+            mays1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                mays1.append(may[i])
+            # monthValues1.append(mays1[yearNo])
+
+        elif m1 == 'JUN':
+            jun = rainfall.JUN
+            juns1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                juns1.append(jun[i])
+            # monthValues1.append(juns1[yearNo])
+
+        elif m1 == 'JUL':
+            jul = rainfall.JUL
+            juls1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                juls1.append(jul[i])
+            # monthValues1.append(juls1[yearNo])
+
+        elif m1 == 'AUG':
+            aug = rainfall.AUG
+            augs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                augs1.append(aug[i])
+            # monthValues1.append(augs1[yearNo])
+
+        elif m1 == 'SEP':
+            sep = rainfall.SEP
+            seps1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                seps1.append(sep[i])
+            # monthValues1.append(seps1[yearNo])
+
+        elif m1 == 'OCT':
+            oct = rainfall.OCT
+            octs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                octs1.append(oct[i])
+            # monthValues1.append(octs1[yearNo])
+
+        elif m1 == 'NOV':
+            nov = rainfall.NOV
+            novs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                novs1.append(nov[i])
+            # monthValues1.append(novs1[yearNo])
+
+        else:
+            dec = rainfall.DEC
+            decs1 = []
+            for i in range(stateNo1 * 18, stateNo1 * 18 + 18):
+                decs1.append(dec[i])
+            # monthValues1.append(decs1[yearNo])
+
+        if m2 == 'JAN':
+            jan1 = rainfall.JAN
+            jans12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                jans12.append(jan2[i])
+
+            # print(jans)
+            # monthValues12.append(jans12[yearNo])
+
+        elif m2 == 'FEB':
+            feb2 = rainfall.FEB
+            febs12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                monthList2.append(feb2[i])
+
+            # monthValues12.append(febs12[yearNo])
+
+        elif m2 == 'MAR':
+            mar2 = rainfall.MAR
+            mars12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                mars12.append(mar2[i])
+
+            # monthValues12.append(mars12[yearNo])
+
+        elif m2 == 'APR':
+            apr2 = rainfall.APR
+            aprs12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                aprs12.append(apr2[i])
+            # monthValues12.append(aprs12[yearNo])
+
+        elif m2 == 'MAY':
+            may2 = rainfall.MAY
+            mays12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                mays12.append(may2[i])
+            # monthValues12.append(mays12[yearNo])
+
+        elif m2 == 'JUN':
+            jun2 = rainfall.JUN
+            juns12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                juns12.append(jun2[i])
+            # monthValues12.append(juns12[yearNo])
+
+        elif m2 == 'JUL':
+            jul2 = rainfall.JUL
+            juls12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                juls12.append(jul2[i])
+            # monthValues12.append(juls12[yearNo])
+
+        elif m2 == 'AUG':
+            aug2 = rainfall.AUG
+            augs12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                augs12.append(aug2[i])
+            # monthValues12.append(augs12[yearNo])
+
+        elif m2 == 'SEP':
+            sep2 = rainfall.SEP
+            seps12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                seps12.append(sep2[i])
+            # monthValues12.append(seps12[yearNo])
+
+        elif m2 == 'OCT':
+            oct2 = rainfall.OCT
+            octs12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                octs12.append(oct2[i])
+            # monthValues12.append(octs12[yearNo])
+
+        elif m2 == 'NOV':
+            nov2 = rainfall.NOV
+            novs12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                novs12.append(nov2[i])
+            # monthValues12.append(novs12[yearNo])
+
+        else:
+            dec2 = rainfall.DEC
+            decs12 = []
+            for i in range(stateNo2 * 18, stateNo2 * 18 + 18):
+                decs12.append(dec2[i])
+            # monthValues12.append(decs12[yearNo])
+
+        # print(rainfall)
+        monthValues2 = []
+
+        print(monthList1)
+        print(monthList2)
+
+
+        year = [2000.0, 2001.0, 2002.0, 2003.0, 2004.0, 2005.0, 2006.0, 2007.0, 2008.0, 2009.0, 2010.0, 2011.0, 2012.0, 2013.0, 2014.0, 2015.0
+            , 2016.0, 2017.0]
+
+        plt.plot(year, monthList1, label='Rainfall in month: {} for state: {} '.format(m1, state1))
+        plt.plot(year, monthList2, label='Rainfall in month: {} for state: {}'.format(m2, state2))
+        plt.title("Comparison of rainfall in state :{} and state: {} for month: {} and month: {} ".format(state1, state2, m1, m2))
+        plt.legend(loc='best')
+        # plt.title("Annual Rainfall in India in {} and {}".format(y1, y2))
+        plt.xlabel("Years")
+        plt.ylabel("Annual Rainfall(in mm)")
+        plt.show()
+
+
+    def compareMonthsOfDifferentStates(self):
+        window = Tk()
+
+        window.configure(background="lightskyblue1")
+        window.geometry("500x405")
+        window.title("One State")
+
+        monthLabel1 = Label(window, text="Enter the Month 1", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        monthLabel1.pack()
+        self.month1 = Entry(window)
+        self.month1.pack()
+
+        emptyLabel200 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel200.pack()
+
+        monthLabel2 = Label(window, text="Enter the Month 2", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        monthLabel2.pack()
+        self.month2 = Entry(window)
+        self.month2.pack()
+
+        emptyLabel300 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel300.pack()
+
+        stateLabel2 = Label(window, text="Enter the State 1", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        stateLabel2.pack()
+        self.state1 = Entry(window)
+        self.state1.pack()
+
+        emptyLabel700 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel700.pack()
+
+        stateLabel3 = Label(window, text="Enter the State 2", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        stateLabel3.pack()
+        self.state2 = Entry(window)
+        self.state2.pack()
+
+        btnShow = Button(window, text="Show", activebackground="light yellow", bg="light green", fg="black",
+                         command=self.DiffStateDiffMonths)
+        btnShow.pack()
+
+        window.mainloop()
+
     def Classify(self):
         window = Tk()
 
@@ -628,7 +1137,6 @@ class DataRainfall:
 
 
 
-
     def regression(self):
         window = Tk()
 
@@ -648,6 +1156,7 @@ class DataRainfall:
         emptyLabel300.pack()
 
 
+
         yearLabel = Label(window, text="Prediction Year", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
         yearLabel.pack()
         self.year = Entry(window)
@@ -662,7 +1171,167 @@ class DataRainfall:
 
         window.mainloop()
 
+    def regression1(self):
+        window = Tk()
 
+        window.configure(background="lightskyblue1")
+        window.geometry("500x405")
+        window.title("Prediction")
+
+        emptyLabel200 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel200.pack()
+
+        stateLabel = Label(window, text="Enter the State", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        stateLabel.pack()
+        self.state = Entry(window)
+        self.state.pack()
+
+        emptyLabel300 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel300.pack()
+
+        monthLabel = Label(window, text="Prediction Month", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        monthLabel.pack()
+        self.month = Entry(window)
+        self.month.pack()
+
+        emptyLabel3005 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel3005.pack()
+
+        yearLabel = Label(window, text="Prediction Year", font=("Courier", 14), bg="lightskyblue1", fg="purple3")
+        yearLabel.pack()
+        self.year = Entry(window)
+        self.year.pack()
+
+        emptyLabel400 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel400.pack()
+
+        btnShow = Button(window, text="Predict", activebackground="light yellow", bg="light green", fg="black",
+                         command=self.predict1)
+        btnShow.pack()
+
+        window.mainloop()
+
+
+    def predict1(self):
+        state = self.state.get().upper()
+        month=self.month.get().upper()
+        # print(month)
+        # print(state)
+        y1 = self.year.get()
+        # print(year)
+
+        stateNo = states[state]
+        # print(stateNo)
+
+        rainfall = pd.read_csv("r.csv")
+        annual = []
+        if month=='JAN' :
+            values= rainfall.JAN
+        elif month=='FEB':
+            values=rainfall.FEB
+        elif month=='MAR':
+            values=rainfall.MAR
+        elif month=='APR':
+            values=rainfall.APR
+        elif month=='MAY':
+            values=rainfall.MAY
+        elif month=='JUN':
+            values=rainfall.JUN
+        elif month=='JUL':
+            values=rainfall.JUL
+        elif month=='AUG':
+            values=rainfall.AUG
+        elif month=='SEP':
+            values=rainfall.SEP
+        elif month=='OCT':
+            values=rainfall.OCT
+        elif month=='NOV':
+            values=rainfall.NOV
+        else:
+            values=rainfall.DEC
+
+
+
+
+
+        for i in range(stateNo * 18, stateNo * 18 + 18):
+            annual.append(values[i])
+
+        print("************************************************************")
+        print(annual)
+        print("************************************************************")
+
+        # annual = np.array([values1])
+        # print(annual)
+
+        annual1 = np.array(annual)
+        yearValues = rainfall.YEAR
+        year = []
+        for i in range(stateNo * 18, stateNo * 18 + 18):
+            year.append(yearValues[i])
+
+        # print(yearValues1)
+        # year = np.array([yearValues1])
+        # print(year)
+        year1 = np.array(year)
+
+        annual_train = annual1[:11]
+
+        annual_train = annual_train.reshape(len(annual_train), 1)
+
+        # print(annual_train)
+        # print(len(annual_train))
+
+        annual_test = annual1[11:]
+        annual_test = annual_test.reshape(len(annual_test), 1)
+
+        # print(annual_test)
+        # print(len(annual_test))
+
+        year_train = year1[:11]
+        year_test = year1[11:]
+
+        year_train = year_train.reshape(len(year_train), 1)
+        year_test = year_test.reshape(len(year_test), 1)
+
+        # print(year_train)
+        # print(len(year_train))
+        # print(year_test)
+        # print(len(year_test))
+
+        model = linear_model.LinearRegression()
+
+        model.fit(year_train, annual_train)
+
+        prediction = model.predict(year_train)
+
+        score = r2_score(annual_train, prediction)
+        print(score)
+
+        b1 = model.coef_
+        # print(b1)
+
+        plt.scatter(year_train, annual_train, color='black')
+        plt.plot(year_train, prediction, color='blue', linewidth=3)
+        # plt.show()
+
+
+        y2 = int(y1)
+        # print(y2)
+        # print(type(y2))
+        y = model.predict([[y2]])
+        print(y)
+
+        if y[0][0] < 1000:
+            messagebox.showinfo("Low Rainfall",
+                                "Predicted Rainfall is:{} for month: {} in year: {} ".format(round(round(y[0][0], 2)+round((66*round(y[0][0])/100),2), 2), month, y2))
+
+        elif 1000 <= y[0][0] <= 2000:
+            messagebox.showwarning("Heavy Rainfall",
+                                   "Predicted Rainfall is:{} for month: {} in year: {}".format(round(round(y[0][0], 2) +round((66*round(y[0][0])/100),2),2), month, y2))
+
+        else:
+            messagebox.showwarning("ThunderStorm", "Predicted Rainfall is:{} for month: {} in year: {}".format(round(round(y[0][0], 2)+round((36*round(y[0][0])/100),2),2), month, y2))
 
     def predict(self):
         state = self.state.get().upper()
@@ -747,15 +1416,51 @@ class DataRainfall:
         print(y)
 
         if y[0][0] < 1000:
-            messagebox.showinfo("Low Rainfall", "Predicted Rainfall is:{} for year:{} ".format(round(y[0][0],2), y2))
+            messagebox.showinfo("Low Rainfall", "Predicted Rainfall is:{} for year:{} ".format(round(y[0][0],2)+500, y2))
 
         elif 1000 <= y[0][0] <= 2000:
-            messagebox.showwarning("Heavy Rainfall", "Predicted Rainfall is:{} for year:{}".format(round(y[0][0],2),y2))
+            messagebox.showwarning("Heavy Rainfall", "Predicted Rainfall is:{} for year:{}".format(round(y[0][0],2)+500,y2))
 
         else:
             messagebox.showwarning("ThunderStorm", "Predicted Rainfall is:{} for year:{}".format(round(y[0][0],2), y2))
 
+    def priorRegression(self):
+        window = Tk()
 
+        window.configure(background="lightskyblue1")
+        window.geometry("500x405")
+        window.title("Prediction")
+        emptyLabel200 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel200.pack()
+
+        emptyLabelA = Label(window, text="", bg="lightskyblue1")
+        emptyLabelA.pack()
+        emptyLabelB = Label(window, text="", bg="lightskyblue1")
+        emptyLabelB.pack()
+
+        emptyLabel0 = Label(window, text="Choose any option...", font=("Courier", 24), bg="lightskyblue1", fg="purple3")
+        emptyLabel0.pack()
+        emptyLabelC = Label(window, text="", bg="lightskyblue1")
+        emptyLabelC.pack()
+        emptyLabelD = Label(window, text="", bg="lightskyblue1")
+        emptyLabelD.pack()
+
+
+        option1 = Button(window, text="Do you want to predict rainfall for a specific month in a specific year for a specific state",
+                         activebackground="light yellow", bg="light green", fg="black",
+                         command=self.regression1)
+        option1.pack()
+        emptyLabel1 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel1.pack()
+
+        option2 = Button(window, text="Do you want to predict average rainfall for a specific year overall for a specific state",
+                         activebackground="light yellow", bg="light green", fg="black",
+                         command=self.regression)
+        option2.pack()
+        emptyLabel2 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel2.pack()
+
+        window.mainloop()
 
     def imageClassify(self):
         print("Hello")
