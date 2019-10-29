@@ -9,9 +9,6 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation,Flatten, Conv2D, MaxPooling2D
 
 
-
-
-
 DATADIR="/home/ayushi/Pictures/potholes/pothole_image_data"
 CATEGORIES=["with", "without"] # 0-with 1-without
 
