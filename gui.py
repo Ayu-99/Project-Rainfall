@@ -1,12 +1,14 @@
 from tkinter import *
 # from tkinter.ttk import *
-from login import *
+# from login import *
 from functions import DataRainfall
 # from tkinter import *
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 from tkinter import messagebox
+from report import *
+
 
 
 cred = credentials.Certificate("serviceAccountKey.json")
@@ -14,6 +16,9 @@ firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 df = DataRainfall()
+
+r = RegisterReport()
+
 
 class User:
 
@@ -26,7 +31,9 @@ class User:
 
 
 class Project:
+
     def signUp(self):
+        firebase_admin.get_app()
         user = User(None, None)
 
         # print(self.username.get())
@@ -52,7 +59,7 @@ class Project:
 
 
     def login(self):
-
+        firebase_admin.get_app()
         username=self.username.get()
         password=self.password.get()
 
@@ -333,7 +340,7 @@ class Project:
         emptyLabel3 = Label(window, text="", bg="lightskyblue1")
         emptyLabel3.pack()
 
-        option4 = Button(window, text="Image Classification", activebackground="light yellow", bg="light green", fg="black", command=df.imageClassify)
+        option4 = Button(window, text="Image Classification", activebackground="light yellow", bg="light green", fg="black", command=r.take_input)
         option4.pack()
         emptyLabel4 = Label(window, text="", bg="lightskyblue1")
         emptyLabel4.pack()
