@@ -5,8 +5,12 @@ import cv2
 import random
 import pickle
 import tensorflow as tf
+from tensorflow import keras
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation,Flatten, Conv2D, MaxPooling2D
+
+
+
 
 
 DATADIR="/home/ayushi/Pictures/potholes/pothole_image_data"
@@ -66,11 +70,13 @@ pickle_in=open("X.pickle", "rb")
 X=pickle.load(pickle_in)
 # print(X[1])
 
-X =pickle.load(open("X.pickle", "rb"))
-y =pickle.load(open("y.pickle", "rb"))
+X = pickle.load(open("X.pickle", "rb"))
+y = pickle.load(open("y.pickle", "rb"))
 
-X=X/255.0
-model=Sequential()
+
+X = X/255.0
+model = keras.Sequential()
+
 model.add(Conv2D(64, (3,3), input_shape=X.shape[1:]))
 model.add(Activation("relu"))
 model.add(MaxPooling2D(pool_size=(2,2)))
@@ -91,3 +97,5 @@ model.compile(loss="binary_crossentropy",
 
 model.fit(X,y, batch_size=32, validation_split=0.1)
 
+
+model.save('64X3-CNN.model')
