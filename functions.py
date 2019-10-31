@@ -996,9 +996,8 @@ class DataRainfall:
         # print(rainfall)
         monthValues2 = []
 
-        print(monthList1)
-        print(monthList2)
-
+        # print(monthList1)
+        # print(monthList2)
 
         year = [2000.0, 2001.0, 2002.0, 2003.0, 2004.0, 2005.0, 2006.0, 2007.0, 2008.0, 2009.0, 2010.0, 2011.0, 2012.0, 2013.0, 2014.0, 2015.0
             , 2016.0, 2017.0]
@@ -1257,9 +1256,9 @@ class DataRainfall:
         for i in range(stateNo * 18, stateNo * 18 + 18):
             annual.append(values[i])
 
-        print("************************************************************")
-        print(annual)
-        print("************************************************************")
+        # print("************************************************************")
+        # print(annual)
+        # print("************************************************************")
 
         # annual = np.array([values1])
         # print(annual)
@@ -1306,7 +1305,7 @@ class DataRainfall:
         prediction = model.predict(year_train)
 
         score = r2_score(annual_train, prediction)
-        print(score)
+        # print(score)
 
         b1 = model.coef_
         # print(b1)
@@ -1320,7 +1319,8 @@ class DataRainfall:
         # print(y2)
         # print(type(y2))
         y = model.predict([[y2]])
-        print(y)
+        # print(y)
+
 
         if y[0][0] < 1000:
             messagebox.showinfo("Low Rainfall",
@@ -1364,7 +1364,7 @@ class DataRainfall:
 
         # print(yearValues1)
         # year = np.array([yearValues1])
-        print(year)
+        # print(year)
         year1 = np.array(year)
 
         annual_train = annual1[:11]
@@ -1399,7 +1399,7 @@ class DataRainfall:
         prediction = model.predict(year_train)
 
         score = r2_score(annual_train, prediction)
-        print(score)
+        # print(score)
 
         b1 = model.coef_
         # print(b1)
@@ -1413,7 +1413,7 @@ class DataRainfall:
         # print(y2)
         # print(type(y2))
         y = model.predict([[y2]])
-        print(y)
+        # print(y)
 
         if y[0][0] < 1000:
             messagebox.showinfo("Low Rainfall", "Predicted Rainfall is:{} for year:{} ".format(round(y[0][0],2)+500, y2))
@@ -1428,7 +1428,7 @@ class DataRainfall:
         window = Tk()
 
         window.configure(background="lightskyblue1")
-        window.geometry("500x405")
+        window.geometry("700x405")
         window.title("Prediction")
         emptyLabel200 = Label(window, text="", bg="lightskyblue1")
         emptyLabel200.pack()
@@ -1461,9 +1461,3 @@ class DataRainfall:
         emptyLabel2.pack()
 
         window.mainloop()
-
-    def imageClassify(self):
-        print("Hello")
-
-
-
