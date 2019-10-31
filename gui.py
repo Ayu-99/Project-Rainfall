@@ -10,12 +10,13 @@ from tkinter import messagebox
 from report import *
 
 
-
-cred = credentials.Certificate("serviceAccountKey.json")
-firebase_admin.initialize_app(cred)
-
-db = firestore.client()
+#
+# cred = credentials.Certificate("serviceAccountKey.json")
+# firebase_admin.initialize_app(cred)
+#
+# db = firestore.client()
 df = DataRainfall()
+# window=Tk()
 
 r = RegisterReport()
 
@@ -41,13 +42,13 @@ class Project:
         user.uname = self.username.get()
         user.pswd = self.password.get()
 
-        user.showUserDetails()
+        # user.showUserDetails()
 
         data = user.__dict__
 
         db.collection("User").document().set(data)
 
-        print(">> ", user.uname, "Saved in Firebase")
+        # print(">> ", user.uname, "Saved in Firebase")
 
         self.popUp()
 
@@ -63,7 +64,7 @@ class Project:
         username=self.username.get()
         password=self.password.get()
 
-        print(username, " ", password)
+        # print(username, " ", password)
         # print(db.collection("User").document().get())
         usernameDB=db.collection("User").where("uname", '==', username).stream()
         passwordDB=db.collection("User").where("pswd", '==', password).stream()
@@ -185,7 +186,7 @@ class Project:
     def main(self):
         window = Tk()
         window.configure(background="lightskyblue1")
-        window.geometry("700x705")
+        window.geometry("1200x505")
         window.title("WELCOME")
 
         emptyLabel = Label(window, text="WELCOME", font=("Courier", 44), bg="lightskyblue1")
@@ -197,7 +198,7 @@ class Project:
         emptyLabel800.pack()
 
 
-        emptyLabel0 = Label(window, text="RAINFALL ANALYSIS AND PREDICTION", font=("Courier", 24), bg="lightskyblue1", fg="purple3")
+        emptyLabel0 = Label(window, text="RAINFALL ANALYSIS, PREDICTION AND IMAGE CLASSIFICATION", font=("Courier", 24), bg="lightskyblue1", fg="purple3")
         emptyLabel0.pack()
 
         emptyLabel0 = Label(window, text="This  project is based on data collected from year:2000-2017", font=("Courier", 14), bg="lightskyblue1",
@@ -297,18 +298,15 @@ class Project:
         emptyLabel7.pack()
 
         window.mainloop()
-
-        window.destroy()
-
-
-
-
-
+    #
+    # def close_window(self, window):
+    #     window.destroy()
 
     def mainScreen(self):
         window = Tk()
 
         window.configure(background="lightskyblue1")
+
         window.geometry("500x405")
         window.title("Rainfall")
 
@@ -340,13 +338,21 @@ class Project:
         emptyLabel3 = Label(window, text="", bg="lightskyblue1")
         emptyLabel3.pack()
 
-        option4 = Button(window, text="Image Classification", activebackground="light yellow", bg="light green", fg="black", command=r.take_input)
+        option4 = Button(window, text="Image Classification", activebackground="light yellow", bg="light green", fg="black", command=r.take_image)
         option4.pack()
         emptyLabel4 = Label(window, text="", bg="lightskyblue1")
         emptyLabel4.pack()
 
+        emptyLabel3 = Label(window, text="", bg="lightskyblue1")
+        emptyLabel3.pack()
+        #
+        # option4 = Button(window, text="CLOSE", activebackground="light yellow", bg="light green",
+        #                  fg="black", command=self.close_window(window))
+        # option4.pack()
+        # emptyLabel4 = Label(window, text="", bg="lightskyblue1")
+        # emptyLabel4.pack()
+
         window.mainloop()
-        window.destroy()
 
         # window.destroy()
 
@@ -354,6 +360,6 @@ class Project:
         self.mainScreen()
 
 
-p=Project()
+p = Project()
 p.main()
 
