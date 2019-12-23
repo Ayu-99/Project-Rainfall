@@ -13,13 +13,13 @@ from tensorflow.keras.layers import Dense, Dropout, Activation,Flatten, Conv2D, 
 
 
 
-DATADIR="/home/ayushi/Pictures/potholes/pothole_image_data"
+DATADIR="C://Users/Ayushi Sharma/Pictures/potholes/pothole_image_data"
 CATEGORIES=["with", "without"] # 0-with 1-without
 
 
 
 training_data=[]
-IMG_SIZE = 280
+IMG_SIZE = 250
 
 
 def create_training_data():
@@ -29,12 +29,7 @@ def create_training_data():
         for img in os.listdir(path):
             try:
                 img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
-                # plt.imshow(img_array, cmap="gray")
-                # plt.show()
-                # print(img_array.shape)
                 new_array = cv2.resize(img_array, (IMG_SIZE, IMG_SIZE))
-                # plt.imshow(new_array, cmap='gray')
-                # plt.show()
                 training_data.append([new_array, class_num])
 
             except Exception as e:
@@ -48,7 +43,7 @@ random.shuffle(training_data)
 # for sample in training_data[:10]:
 #     print(sample[1])
 
-
+# import numpy as np
 X=[] #feature set
 y=[] #labels
 
@@ -71,7 +66,7 @@ X=pickle.load(pickle_in)
 # print(X[1])
 
 X = pickle.load(open("X.pickle", "rb"))
-y = pickle.load(open("y.pickle", "rb"))
+y = np.array(pickle.load(open("y.pickle", "rb")))
 
 
 X = X/255.0
@@ -98,4 +93,4 @@ model.compile(loss="binary_crossentropy",
 model.fit(X,y, batch_size=32, validation_split=0.1)
 
 
-model.save('64X3-CNN.model')
+model.save('64X3-CNN.model1')
